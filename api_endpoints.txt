@@ -1,0 +1,40 @@
+1. GET /movies?id=133093,816692
+    Description: Get a list of movies by providing their IDs
+    Parameters:
+    id (query parameter): Comma-separated list of movie IDs
+    Response: An array of movies with their ID, title, and year
+
+2. GET /screenings
+    Description: Get a list of available screenings for booking
+    Response: An array of screenings, each containing session information (timestamp), number of tickets, number of tickets left, and movie details (title and year)
+
+3. GET /tickets
+    Description: Get a list of bookings (tickets) made by the user
+    Response: An array of tickets, each containing booking details
+
+4. POST /bookings
+    Description: Create a booking (ticket) for a screening with available tickets
+    Request Body:
+    screeningId (required): ID of the screening to book
+    Response: The created booking (ticket) details
+
+5. POST /screenings
+    Description: Create a new viewing screening for a movie with a timestamp and ticket allocation
+    Request Body:
+    movieId (required): ID of the movie for the screening
+    timestamp (required): Timestamp of the screening
+    ticketAllocation (required): Number of tickets allocated for the screening
+    Response: The created screening details
+
+6. DELETE /screenings/:id
+    Description: Delete a viewing screening if it is empty (no bookings/tickets)
+    Parameters:
+    id (path parameter): ID of the screening to delete
+
+7. PATCH /screenings/:id
+    Description: Change the ticket allocation of a screening as long as it is not lower than the number of reserved tickets
+    Parameters:
+    id (path parameter): ID of the screening to update
+    Request Body:
+    ticketAllocation (required): New ticket allocation for the screening
+    Response: The updated screening details

@@ -12,7 +12,7 @@ export default (db: Database) => {
     jsonRoute(async (req: Request) => {
       const movieIdStrings: string[] = req.query.id?.toString().split(',') || []
       const movieIds = movieIdStrings.map((value) => parseInt(value, 10))
-      
+
       const movies = await messages.findByIds(movieIds)
 
       return movies
